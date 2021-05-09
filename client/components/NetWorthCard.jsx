@@ -4,7 +4,7 @@ import { Card, Container } from 'react-bootstrap';
 const NetWorthCard = () => {
   return (
     <Card>
-      <Card.Title>NetWorth</Card.Title>
+      <Card.Title className='p-2'>NetWorth</Card.Title>
       <Card.Body>
         <Card.Text> Net Worth1</Card.Text>
         <Card.Text> Net Worth2</Card.Text>

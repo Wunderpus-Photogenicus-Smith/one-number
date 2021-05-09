@@ -4,7 +4,7 @@ import { Card, Container } from 'react-bootstrap';
 const LiabiltiesCard = () => {
   return (
     <Card>
-      <Card.Title>Liabilties</Card.Title>
+      <Card.Title className='p-2'>Liabilties</Card.Title>
       <Card.Body>
         <Card.Text> liability1</Card.Text>
         <Card.Text> liability2</Card.Text>
