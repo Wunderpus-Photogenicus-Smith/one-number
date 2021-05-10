@@ -74,15 +74,23 @@ isUserAuthenticated = (req, res, next) => {
     console.log('req user, logged in');
     console.log(req.user);
     // return db_controller.getUser(req, res, next);
+    res.locals.user = req.user;
     next();
   } else {
-    res.redirect('/');
+    // res.redirect('/');
+
+    next();
   }
 };
 
 // Secret route
 app.get('/secret', isUserAuthenticated, (req, res) => {
-  res.send('You have reached the secret route');
+  // recieved in res.locals.user from isUserAuthenticated which is just a long google ID
+  console.log('inside of secret, res.locals is', res.locals.user);
+  if (res.locals.user) res.send(res.locals.user);
+  else {
+    res.send('no user found');
+  }
 });
 
 app.get(
