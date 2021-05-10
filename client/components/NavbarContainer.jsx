@@ -27,7 +27,13 @@ const NavbarContainer = () => {
       return (
         <div>
           <Nav>
-            <Nav.Link href="/auth/logout">Logout</Nav.Link>
+            <Nav.Link
+              href="/auth/logout"
+              className="btn float-right"
+              style={{ float: 'right' }}
+            >
+              Logout
+            </Nav.Link>
           </Nav>
         </div>
       );
@@ -35,7 +41,12 @@ const NavbarContainer = () => {
       return (
         <div>
           <Nav>
-            <Nav.Link href="/auth/google">Login</Nav.Link>
+            <Nav.Link
+              href="/auth/google"
+              className="d-flex justify-content-end"
+            >
+              Login
+            </Nav.Link>
           </Nav>
         </div>
       );
@@ -53,7 +64,7 @@ const NavbarContainer = () => {
         <Navbar.Brand href="#home">OneNumber Net Worth tracker</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <div className="navbar">{renderContent(user)}</div>
+          <div>{renderContent(user)}</div>
         </Navbar.Collapse>
       </Navbar>
     </div>
