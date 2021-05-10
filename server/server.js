@@ -94,14 +94,9 @@ app.get('/auth/logout', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  console.log('new console log erik', req.user);
-  if (req.user) {
-    res.redirect('/dashboard');
-  } else {
-    res.redirect('/landing');
-  }
   res.sendFile(path.join(__dirname, './../build/index.html'));
 });
+
 app.get('/dashboard', (req, res) => {
   console.log('new console log erik', req.user);
   if (req.user) {
