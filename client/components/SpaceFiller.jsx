@@ -8,13 +8,16 @@ const SpaceFiller = (props) => {
     const script = document.createElement('script');
     script.src = 'https://cdn.plaid.com/link/v2/stable/link-initialize.js';
     script.async = true;
-    script.onload = () => this.scriptLoaded();
+    script.onload = () => {
+      this.scriptLoaded();
+      console.log(Plaid);
+      createPlaidStuff(Plaid);
+    }
 
     document.body.appendChild(script);
-    createPlaidStuff();
   });
 
-  const createPlaidStuff = () => {
+  const createPlaidStuff = (Plaid) => {
     const handler = Plaid.create({
       token: 'place token here',
       onSuccess: (public_token, metadata) => {
@@ -27,7 +30,7 @@ const SpaceFiller = (props) => {
 
       },
       onEvent: (eventName, metadata) => {
-        
+
       },
       receivedRedirectUri: null,
 
