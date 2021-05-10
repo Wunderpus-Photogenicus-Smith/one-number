@@ -9,6 +9,8 @@ import {
   Button,
   FormControl,
 } from 'react-bootstrap';
+import PlaidLinkButton from './SpaceFiller.jsx';
+
 
 const NavbarContainer = () => {
   const [user, setUser] = useState('');
@@ -34,6 +36,7 @@ const NavbarContainer = () => {
             >
               Logout
             </Nav.Link>
+            <PlaidLinkButton />
           </Nav>
         </div>
       );

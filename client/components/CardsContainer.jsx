@@ -7,7 +7,7 @@ import NetWorthCard from './NetWorthCard.jsx';
 const CardsContainer = () => {
   return (
     <Container>
-      <Row>
+      <Row className='m-2'>
         <CardGroup>
           <AssetsCard />
           <LiabilitiesCard />

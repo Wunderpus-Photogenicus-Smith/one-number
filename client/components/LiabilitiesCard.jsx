@@ -1,23 +1,72 @@
-import React from 'react';
-import { Card, Container } from 'react-bootstrap';
+
+import React, {useState} from 'react';
+import { Card, Container, Table } from 'react-bootstrap';
+
+const dataFromJSON = require('../json_from_plaid/investments-holdings-get.json');
 
 const LiabiltiesCard = () => {
+  
+  const accounts = dataFromJSON.holdings.accounts;
+
+  const amassTotals = () => {
+    
+  let totals = 0;
+  accounts
+  .filter((el) => el.type === 'loan' || el.type === 'credit')
+    .forEach((el) => {
+      totals += el.balances.current;
+    });
+
+    return totals
+  };
+
+   const total = amassTotals();
+
+   
+   const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 2, // (causes 2500.99 to be printed as $2,501)
+  });
+  
+  const LiabilityTotal = formatter.format(total)
+
   return (
-    <Card>
-      <Card.Title className="p-2">Liabilties</Card.Title>
-      <Card.Body>
-        <Card.Text> liability1</Card.Text>
-        <Card.Text> liability2</Card.Text>
-        <Card.Text> liability3</Card.Text>
-        <Card.Text> liability4</Card.Text>
-        <Card.Text> liability5</Card.Text>
-        <Card.Text> liability6</Card.Text>
-      </Card.Body>
-      <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
-      </Card.Footer>
+    <Card className='h-100'>
+      <Card.Header>Liabilities</Card.Header>
+      <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+          {accounts
+            .filter(
+              (el) => el.type === 'loan' || el.type === 'credit')
+            .map((asset) => {
+              let dollarUSLocale = Intl.NumberFormat('en-US',{
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 2
+              })
+              let price = dollarUSLocale.format(asset.balances.current)
+              return [
+                <tr key={asset.name}>
+                  <td>{asset.name.slice(6)}: </td>
+                  <td>{price}</td>
+                </tr>,
+            
+              ];
+            })}
+          
+      </tbody>
+      </Table>
+      <Card.Footer >{`Combined Total: ${LiabilityTotal}`}</Card.Footer>
     </Card>
   );
 };
 
 export default LiabiltiesCard;
+

@@ -11,14 +11,12 @@ import NavbarContainer from './components/NavbarContainer.jsx';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CardsContainer from './components/CardsContainer.jsx';
-import PlaidLinkButton from './components/SpaceFiller.jsx';
 import LandingContainer from './components/LandingContainer.jsx';
 
 // if we putcards and space filler into one component called dashboard we can use that as a route
 const Dashboard = () => {
   return (
     <Container>
-      <PlaidLinkButton />
       <CardsContainer />
     </Container>
   );
@@ -35,7 +33,6 @@ const App = () => {
           </div>
           <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/landing" component={LandingContainer}></Route>
-          <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
         </Container>
       </div>
