@@ -33,6 +33,7 @@ const App = () => {
           <div>
             <NavbarContainer />
           </div>
+          <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/landing" component={LandingContainer}></Route>
           <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>

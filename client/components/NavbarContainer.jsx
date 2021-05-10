@@ -40,13 +40,8 @@ const NavbarContainer = () => {
     } else {
       return (
         <div>
-          <Nav>
-            <Nav.Link
-              href="/auth/google"
-              className="d-flex justify-content-end"
-            >
-              Login
-            </Nav.Link>
+          <Nav className="mr-auto">
+            <Nav.Link href="/auth/google">Login</Nav.Link>
           </Nav>
         </div>
       );
@@ -61,7 +56,7 @@ const NavbarContainer = () => {
   return (
     <div>
       <Navbar bg="primary" expand="lg" className="p-2" variant="dark">
-        <Navbar.Brand href="#home">OneNumber Net Worth tracker</Navbar.Brand>
+        <Navbar.Brand href="/landing">OneNumber</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <div>{renderContent(user)}</div>
