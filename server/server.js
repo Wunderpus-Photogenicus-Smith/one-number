@@ -72,7 +72,6 @@ isUserAuthenticated = (req, res, next) => {
 // Secret route
 app.get('/secret', isUserAuthenticated, (req, res) => {
   // recieved in res.locals.user from isUserAuthenticated which is just a long google ID
-  console.log('inside of secret, res.locals is', res.locals.user);
   if (res.locals.user) res.send(res.locals.user);
   else {
     res.send('no user found');
@@ -85,16 +84,33 @@ app.get(
   (req, res) => {
     console.log('this is the req.user');
     console.log(req.user);
-    res.send('you reached the redirect URI');
+    res.redirect('/dashboard');
   }
 );
 
 app.get('/auth/logout', (req, res) => {
   req.logout();
-  res.send(req.user);
+  res.redirect('/landing');
 });
 
 app.get('/', (req, res) => {
+  console.log('new console log erik', req.user);
+  if (req.user) {
+    res.redirect('/dashboard');
+  } else {
+    res.redirect('/landing');
+  }
+  res.sendFile(path.join(__dirname, './../build/index.html'));
+});
+app.get('/dashboard', (req, res) => {
+  console.log('new console log erik', req.user);
+  if (req.user) {
+    res.sendFile(path.join(__dirname, './../build/index.html'));
+  } else {
+    res.redirect('/landing');
+  }
+});
+app.get('/landing', (req, res) => {
   res.sendFile(path.join(__dirname, './../build/index.html'));
 });
 
@@ -135,7 +151,7 @@ passport.serializeUser((user, done) => {
   done(null, user.id); // this user is coming from the done function passed from returning from the db
 });
 passport.deserializeUser((id, done) => {
-  console.log('deserialize user is called', id);
+  console.log('deserialize user is called');
 
   // find from the database and send user data here
   done(null, id); // this user is coming from the done function passed from returning from the db
