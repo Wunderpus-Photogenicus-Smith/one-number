@@ -45,7 +45,7 @@ const NavbarContainer = () => {
   // useEffect(() => {
 
   // }, [])
-  console.log('this is the func');
+  // console.log('this is the func');
   getAuthedStatus();
   return (
     <div>
@@ -53,7 +53,7 @@ const NavbarContainer = () => {
         <Navbar.Brand href="#home">OneNumber Net Worth tracker</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <div>{renderContent(user)}</div>
+          <div className="navbar">{renderContent(user)}</div>
         </Navbar.Collapse>
       </Navbar>
     </div>
