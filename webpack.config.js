@@ -16,6 +16,7 @@ module.exports = {
     proxy: {
       '/auth': 'http://localhost:3000',
       '/api': 'http://localhost:3000',
+      '/plaid': 'http://localhost:3000',
       '/secret': 'http://localhost:3000',
       '/landing': 'http://localhost:3000',
       '/dashboard': 'http://localhost:3000',

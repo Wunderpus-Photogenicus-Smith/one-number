@@ -1,76 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-// import { usePlaidLink } from 'react-plaid-link';
+import { usePlaidLink } from 'react-plaid-link';
+import {Helmet} from "react-helmet";
 
 const SpaceFiller = (props) => {
-  useEffect(() => {
-    // Update the document title using the browser API
-    const script = document.createElement('script');
-    script.src = 'https://cdn.plaid.com/link/v2/stable/link-initialize.js';
-    script.async = true;
-    script.onload = () => {
-      this.scriptLoaded();
-      console.log(Plaid);
-      createPlaidStuff(Plaid);
-    }
 
-    document.body.appendChild(script);
-  });
 
-  const createPlaidStuff = (Plaid) => {
-    const handler = Plaid.create({
-      token: 'place token here',
-      onSuccess: (public_token, metadata) => {
+  const createPlaidStuff = () => {
+    // console.log(Plaid);
+    fetch('/plaid/get_link_token')
+      .then(response => response.json())
+      .then(({linkToken}) => {
         
-      },
-      onLoad: () => {
+        const handler = Plaid.create({
+          token: linkToken,
+          onSuccess: (public_token, metadata) => {
+            // console.log('testing if onsuccess got called');
+            console.log(public_token);
+            console.log(metadata);
+          },
+          onLoad: () => {
 
-      },
-      onExit: (err, metadata) => {
+          },
+          onExit: (error, metadata) => {
+            // console.log('error occured on plaid create');
+            // Save data from the onExit handler
+            supportHandler.report({
+              error: error,
+              institution: metadata.institution,
+              link_session_id: metadata.link_session_id,
+              plaid_request_id: metadata.request_id,
+              status: metadata.status,
+            });
+          },
+          onEvent: (eventName, metadata) => {
+            // send event and metadata to self-hosted analytics
+            // console.log('event happened');
+            console.log(eventName);
+            console.log(metadata);
+          },
+          receivedRedirectUri: null,
 
-      },
-      onEvent: (eventName, metadata) => {
+        })
+        handler.open();
+        // sethandlerFunc(handler);
 
-      },
-      receivedRedirectUri: null,
-
-    })
+      });
   }
 
-  // const onSuccess = useCallback(
-  //   (token, metadata) => console.log('onSuccess', token, metadata),
-  //   []
-  // );
-
-  // const onEvent = useCallback(
-  //   (eventName, metadata) => console.log('onEvent', eventName, metadata),
-  //   []
-  // );
-
-  // const onExit = useCallback(
-  //   (err, metadata) => console.log('onExit', err, metadata),
-  //   []
-  // );
-
-  // const config = {
-  //   token: props.token,
-  //   onSuccess,
-  //   onEvent,
-  //   onExit,
-  //   // –– optional parameters
-  //   // receivedRedirectUri: props.receivedRedirectUri || null,
-  //   // ...
-  // };
-
-  // const { open, ready, error } = usePlaidLink(config);
-  // console.log(Plaid.create());
   return (
-    <>
-      {'test'}
-      {/* <Button onClick={() => open()} disabled={!ready || error}>
-        Open Plaid Link
-      </Button> */}
-    </>
+    <div>
+                  <Helmet>
+              <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js" type="text/javascript" />
+            </Helmet>
+    {/* <button onClick={() => console.log('test')}>button</button> */}
+      <Button type='submit' onClick={createPlaidStuff}>
+        Connect a bank account
+      </Button>
+    </div>
   );
 };
 export default SpaceFiller;

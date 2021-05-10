@@ -10,6 +10,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./api_keys.js');
 require('dotenv').config();
 const { User, Item, Account, Security, Holding } = require('./dbmodel');
+const plaidRouter = require('./plaidRouter');
 
 const client = new plaid.Client({
   clientID: process.env.PLAID_CLIENT_ID,
@@ -20,6 +21,9 @@ const client = new plaid.Client({
 function handleError(errorMessage) {
   console.error(errorMessage);
 }
+
+app.use('/plaid', plaidRouter);
+
 
 app.post('/plaid_token_exchange', async (req, res) => {
   const { publicTOken } = req.body;
@@ -95,13 +99,14 @@ app.get('/auth/logout', (req, res) => {
 
 app.get('/', (req, res) => {
   console.log('new console log erik', req.user);
-  if (req.user) {
-    res.redirect('/dashboard');
-  } else {
-    res.redirect('/landing');
-  }
-  res.sendFile(path.join(__dirname, './../build/index.html'));
+  // if (req.user) {
+  //   res.redirect('/dashboard');
+  // } else {
+  // }
+  // res.sendFile(path.join(__dirname, './../build/index.html'));
+  res.redirect('/landing');
 });
+
 app.get('/dashboard', (req, res) => {
   console.log('new console log erik', req.user);
   if (req.user) {
@@ -158,7 +163,5 @@ passport.deserializeUser((id, done) => {
 });
 
 app.listen(port, () => {
-  console.log(`Current enviroment is: ${process.env.NODE_ENV}`);
-  console.log(`Current enviroment is: ${process.env.PLAID_CLIENT_ID}`);
   console.log(`Server is listening at http://localhost:${port}`);
 });
