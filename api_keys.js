@@ -1,6 +1,6 @@
 module.exports = {
   mongoURI:
-    ‘mongodb+srv://p00gz:Pe3nv5mfBV9alaaS@onenumber.ucyky.mongodb.net/oneNumberDB?retryWrites=true&w=majority’,
+    ‘mongodb+srv://dbUser:dbPassWord@cluster0.todug.mongodb.net/myFirstDatabase?retryWrites=true&w=majority’,
   google: {
     clientID:
       ‘372400979747-nuse2cggfa403e6ma5a56o491fdlditq.apps.googleusercontent.com’,
