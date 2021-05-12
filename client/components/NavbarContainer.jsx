@@ -11,7 +11,6 @@ import {
 } from 'react-bootstrap';
 import PlaidLinkButton from './SpaceFiller.jsx';
 
-
 const NavbarContainer = () => {
   const [user, setUser] = useState('');
 
@@ -27,12 +26,12 @@ const NavbarContainer = () => {
   const renderContent = (user) => {
     if (typeof user === 'number') {
       return (
-        <div>
-          <Nav >
+        <div align="right">
+          <Nav>
             <Nav.Link
               href="/auth/logout"
-              className="btn float-right"
-              style={{ float: 'right' }}
+              // className="btn"
+              // style={{ float: 'right' }}
             >
               Logout
             </Nav.Link>
@@ -51,18 +50,16 @@ const NavbarContainer = () => {
     }
   };
 
-  // useEffect(() => {
+  
 
-  // }, [])
-  // console.log('this is the func');
   getAuthedStatus();
   return (
     <div>
-      <Navbar  bg="dark" variant="dark" expand="lg" className="p-2" padding={13}  position='static' color='inherit' >
-        <Navbar.Brand href="/landing"> OneNumber</Navbar.Brand>
+      <Navbar bg="primary" expand="lg" className="p-2" variant="dark">
+        <Navbar.Brand href="/landing">About</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" align='right'>
-          <div>{renderContent(user)}</div>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <div align="right" >{renderContent(user)}</div>
         </Navbar.Collapse>
       </Navbar>
     </div>
