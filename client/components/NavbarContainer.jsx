@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
+import logo from '../src/logo.png';
 import {
   Navbar,
   Nav,
@@ -26,7 +27,7 @@ const NavbarContainer = () => {
   const renderContent = (user) => {
     if (typeof user === 'number') {
       return (
-        <div align="right">
+        <div>
           <Nav>
             <Nav.Link
               href="/auth/logout"
@@ -55,8 +56,9 @@ const NavbarContainer = () => {
   getAuthedStatus();
   return (
     <div>
-      <Navbar bg="primary" expand="lg" className="p-2" variant="dark">
-        <Navbar.Brand href="/landing">About</Navbar.Brand>
+      <Navbar bg="dark"  expand="lg" className="p-2" variant="dark">
+      &nbsp; <img src={logo} alt='logo' height='60' padding={3}/>
+        <Navbar.Brand href="/landing">&nbsp; About</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <div align="right" >{renderContent(user)}</div>

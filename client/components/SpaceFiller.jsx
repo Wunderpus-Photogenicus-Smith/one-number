@@ -5,18 +5,10 @@ import { Helmet } from "react-helmet";
 
 const SpaceFiller = (props) => {
   const createPlaidStuff = () => {
-<<<<<<< HEAD
-
-    fetch('/plaid/get_link_token')
-      .then(response => response.json())
-      .then(({linkToken}) => {
-        
-=======
     // console.log(Plaid);
     fetch("/plaid/get_link_token")
       .then((response) => response.json())
       .then(({ linkToken }) => {
->>>>>>> dev
         const handler = Plaid.create({
           token: linkToken,
           onSuccess: (public_token, metadata) => {
@@ -32,7 +24,7 @@ const SpaceFiller = (props) => {
               }),
             })
               .then((data) => data.json())
-              .then((resp) => console.log(resp))
+              .then((resp) => console.log(resp))  // ! Make sure it's recorded in the State
               .catch((e) => console.log(e));
           },
           onLoad: () => {},
@@ -49,13 +41,9 @@ const SpaceFiller = (props) => {
           },
           onEvent: (eventName, metadata) => {
             // send event and metadata to self-hosted analytics
-<<<<<<< HEAD
-      
-=======
             // console.log('event happened');
             // console.log(eventName);
             // console.log(metadata);
->>>>>>> dev
           },
           receivedRedirectUri: null,
         });
@@ -66,13 +54,6 @@ const SpaceFiller = (props) => {
 
   return (
     <div>
-<<<<<<< HEAD
-            <Helmet>
-              <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js" type="text/javascript" />
-            </Helmet>
-    {/* <button onClick={() => console.log('test')}>button</button> */}
-      <Button type='submit' onClick={createPlaidStuff} variant="outline-info"  bg="dark" variant="dark">
-=======
       <Helmet>
         <script
           src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"
@@ -80,8 +61,7 @@ const SpaceFiller = (props) => {
         />
       </Helmet>
       {/* <button onClick={() => console.log('test')}>button</button> */}
-      <Button type="submit" onClick={createPlaidStuff}>
->>>>>>> dev
+      <Button type="submit" onClick={createPlaidStuff} variant='light'>
         Connect a bank account
       </Button>
     </div>

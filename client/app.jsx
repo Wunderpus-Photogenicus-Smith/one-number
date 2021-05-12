@@ -34,12 +34,8 @@ const App = () => {
           <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/landing" component={LandingContainer}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
-<<<<<<< HEAD
-        </Navbar>
-=======
         </Container>
       </div>    
->>>>>>> dev
     </BrowserRouter>
   );
 };

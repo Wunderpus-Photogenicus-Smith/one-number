@@ -1,5 +1,6 @@
 import React from 'react';
 import { Jumbotron, Button, Container } from 'react-bootstrap';
+
 const LandingContainer = () => {
   return (
     <Container>
@@ -12,7 +13,7 @@ const LandingContainer = () => {
           of your financial health, narrowed down to one number.
         </p>
         <p>
-          <Button href="/auth/google" variant="primary">
+          <Button href="/auth/google" variant="secondary">
             Get Started
           </Button>
         </p>

@@ -108,75 +108,9 @@ const AssetsCard = () => {
   const Assetotal = formatter.format(total);
 
   return (
-<<<<<<< HEAD
-        <Card>
-          <Card.Header>My Assets</Card.Header>
-          <Table striped bordered hover >
-            <thead>
-              <tr>
-                <th>Account</th>
-                <th>Balance</th>
-              </tr>
-            </thead>
-            <tbody>
-                {accounts
-                  .filter(
-                    (el) => el.type === 'depository' || el.type === 'investment')
-                  .map((asset) => {
-                    let dollarUSLocale = Intl.NumberFormat('en-US',{
-                      style: "currency",
-                      currency: "USD",
-                      maximumFractionDigits: 2
-                    })
-                    let price = dollarUSLocale.format(asset.balances.current)
-                    return [
-                      <tr key={asset.name}>
-                        <td>{asset.name.slice(6)}: </td>
-                        <td>{price}</td>
-                      </tr>,
-                    ];
-                  })}
-                     <tr>
-              <td>Total:</td>
-              <td>{accountTotals}</td>
-            </tr>
-            </tbody>
-          </Table>
-          <Table striped bordered hover >
-          <thead>
-              <tr>
-                <th>Holdings</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {groupedSecurities.map((asset) => {
-                 let dollarUSLocale = Intl.NumberFormat('en-US',{
-                  style: "currency",
-                  currency: "USD",
-                  maximumFractionDigits: 2
-                })
-                let price = dollarUSLocale.format(asset.value)
-                return [
-                  <tr key={asset.name}>
-                    <td>{asset.name}:</td>
-                    <td>{price}</td>
-                  </tr>
-                ]
-              })}
-              <tr>
-              <td>Total:</td>
-              <td>{securitiesHoldings}</td>
-            </tr>
-            </tbody>
-          </Table >
-          <Card.Footer >{`Combined Total: ${Assetotal}`}</Card.Footer>
-        </Card>
-   
-  )
-=======
-    <Card>
-      <Card.Header>Assets</Card.Header>
+    <Card className='h-100' border="success" style={{ padding: '0.5rem' }}>
+      <Card.Header align='center'><h5>Assets</h5></Card.Header>
+      <div align='center'><h6>{`Total: ${Assetotal}`}</h6></div>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -209,7 +143,7 @@ const AssetsCard = () => {
           </tr>
         </tbody>
       </Table>
-      <Table striped bordered hover>
+      <Table striped bordered hover style={{ width: '100%' }}>
         <thead>
           <tr>
             <th>Holdings</th>
@@ -237,10 +171,9 @@ const AssetsCard = () => {
           </tr>
         </tbody>
       </Table>
-      <Card.Footer>{`Combined Total: ${Assetotal}`}</Card.Footer>
+      {/* <Card.Footer>{`Combined Total: ${Assetotal}`}</Card.Footer> */}
     </Card>
   );
->>>>>>> dev
 };
 
 export default AssetsCard;
