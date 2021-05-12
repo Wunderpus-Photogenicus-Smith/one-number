@@ -7,7 +7,7 @@ const SpaceFiller = (props) => {
 
 
   const createPlaidStuff = () => {
-    // console.log(Plaid);
+
     fetch('/plaid/get_link_token')
       .then(response => response.json())
       .then(({linkToken}) => {
@@ -15,15 +15,13 @@ const SpaceFiller = (props) => {
         const handler = Plaid.create({
           token: linkToken,
           onSuccess: (public_token, metadata) => {
-            // console.log('testing if onsuccess got called');
-            console.log(public_token);
-            console.log(metadata);
+
           },
           onLoad: () => {
 
           },
           onExit: (error, metadata) => {
-            // console.log('error occured on plaid create');
+      
             // Save data from the onExit handler
             supportHandler.report({
               error: error,
@@ -35,9 +33,7 @@ const SpaceFiller = (props) => {
           },
           onEvent: (eventName, metadata) => {
             // send event and metadata to self-hosted analytics
-            // console.log('event happened');
-            console.log(eventName);
-            console.log(metadata);
+      
           },
           receivedRedirectUri: null,
 

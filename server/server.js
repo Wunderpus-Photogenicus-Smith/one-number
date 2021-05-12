@@ -7,7 +7,7 @@ const app = express();
 const plaid = require('plaid');
 const port = 3000;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('./api_keys.js');
+const keys = require('../api_keys.js');
 require('dotenv').config();
 const { User, Item, Account, Security, Holding } = require('./dbmodel');
 const plaidRouter = require('./plaidRouter');
@@ -61,8 +61,6 @@ app.get(
 
 isUserAuthenticated = (req, res, next) => {
   if (req.user) {
-    console.log('req user, logged in');
-    console.log(req.user);
     // return db_controller.getUser(req, res, next);
     res.locals.user = req.user;
     next();
@@ -86,8 +84,6 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google'),
   (req, res) => {
-    console.log('this is the req.user');
-    console.log(req.user);
     res.redirect('/dashboard');
   }
 );
@@ -98,7 +94,6 @@ app.get('/auth/logout', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  console.log('new console log erik', req.user);
   // if (req.user) {
   //   res.redirect('/dashboard');
   // } else {
@@ -108,7 +103,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/dashboard', (req, res) => {
-  console.log('new console log erik', req.user);
   if (req.user) {
     res.sendFile(path.join(__dirname, './../build/index.html'));
   } else {
@@ -143,21 +137,19 @@ passport.use(
             });
         }
       });
-      console.log('access token: ', accessToken);
-      console.log('profile: ');
-      console.log(profile);
+      // console.log('access token: ', accessToken);
+      // console.log('profile: ');
+      // console.log(profile);
       done(null, profile); // TODO add the user to the database here with upsert, or insert on conflict do nothing sql
     }
   )
 );
 
 passport.serializeUser((user, done) => {
-  console.log('serialize user is called');
   done(null, user.id); // this user is coming from the done function passed from returning from the db
 });
 passport.deserializeUser((id, done) => {
-  console.log('deserialize user is called');
-
+  
   // find from the database and send user data here
   done(null, id); // this user is coming from the done function passed from returning from the db
 });
