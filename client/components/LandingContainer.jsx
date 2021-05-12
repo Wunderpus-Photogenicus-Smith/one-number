@@ -7,13 +7,11 @@ const LandingContainer = () => {
       <Jumbotron>
         
         <Carousel  fade>
-  {/* <Carousel.Item interval={2000}> */}
-  <Carousel.Item interval={5000}>
+  <Carousel.Item interval={10000}>
     <img
       className="d-block w-100"
-      src="https://filmdaily.co/wp-content/uploads/2021/04/finance-02.jpg"
       height="650"
-      // src="../src/finance1.png"
+      src="http://carlosandresbotero.com/velocirabbit/finance1.png"
       alt="First slide"
       position="fixed"
     />
@@ -27,37 +25,45 @@ const LandingContainer = () => {
       </p>
       <p>
         <Button href="/auth/google" variant="secondary">
-          Get Started
+          Let's Get Started
         </Button>
       </p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item interval={4000}>
+  <Carousel.Item interval={10000}>
     <img
       className="d-block w-100"
-      src="https://www.wbcsd.org/var/site/storage/images/media/images/finance_img/25992-1-eng-GB/finance_img_i1140.jpg"
       height="650"
-      // src="../src/finance2.jpg"
+      src="http://carlosandresbotero.com/velocirabbit/finance2.jpg"
       alt="Second slide"
     />
     <Carousel.Caption>
       <div variant="dark">
       <h3>Quick overview of your finances</h3>
       <p>Let's compare your assets vs. liabilities. Visualize your financial situation.</p>
+      <p>
+        <Button href="/dashboard" variant="secondary">
+          Real Time Analisis
+        </Button>
+      </p>
       </div>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
+  <Carousel.Item interval={10000}>
     <img
       className="d-block w-100"
-      src="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/CaseStudies/image/finance.png"
       height="650"
-      // src="../src/finance3.jpg"
+      src="http://carlosandresbotero.com/velocirabbit/finance3.jpg"
       alt="Third slide"
     />
     <Carousel.Caption>
       <h3>Investment opportunities</h3>
       <p>Follow the market, and take action towards your finanacial</p>
+      <p>
+        <Button href="/market" variant="dark">
+          Stock Market
+        </Button>
+      </p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

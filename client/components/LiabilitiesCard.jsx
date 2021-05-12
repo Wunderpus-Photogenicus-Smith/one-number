@@ -15,6 +15,7 @@ const LiabiltiesCard = () => {
   .filter((el) => el.type === 'loan' || el.type === 'credit')
     .forEach((el) => {
       totals += el.balances.current;
+      console.log("This is the data we're receving from static JSON", dataFromJSON);
     });
 
     return totals
