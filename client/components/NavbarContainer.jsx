@@ -18,7 +18,7 @@ const NavbarContainer = () => {
     fetch('/secret')
       .then((response) => response.json())
       .then((response) => {
-        console.log(typeof response);
+        // console.log(typeof response);
         setUser(response);
       });
   };

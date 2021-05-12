@@ -25,15 +25,21 @@ const Dashboard = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-        <Navbar  bg="dark" variant="dark">
+    <BrowserRouter>      
+      <div>
+        <Container>
           <div>
             <NavbarContainer  />
           </div>
           <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/landing" component={LandingContainer}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
+<<<<<<< HEAD
         </Navbar>
+=======
+        </Container>
+      </div>    
+>>>>>>> dev
     </BrowserRouter>
   );
 };
