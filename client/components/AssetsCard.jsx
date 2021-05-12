@@ -111,7 +111,7 @@ const Assetotal = formatter.format(total)
  
   return (
         <Card>
-          <Card.Header>Assets</Card.Header>
+          <Card.Header>My Assets</Card.Header>
           <Table striped bordered hover >
             <thead>
               <tr>

@@ -26,16 +26,14 @@ const Dashboard = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Container>
+        <Navbar  bg="dark" variant="dark">
           <div>
-            <NavbarContainer />
+            <NavbarContainer  />
           </div>
           <Route exact path="/" component={LandingContainer}></Route>
           <Route exact path="/landing" component={LandingContainer}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
-        </Container>
-      </div>
+        </Navbar>
     </BrowserRouter>
   );
 };

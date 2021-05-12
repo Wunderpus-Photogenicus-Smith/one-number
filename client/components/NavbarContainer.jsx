@@ -28,7 +28,7 @@ const NavbarContainer = () => {
     if (typeof user === 'number') {
       return (
         <div>
-          <Nav>
+          <Nav >
             <Nav.Link
               href="/auth/logout"
               className="btn float-right"
@@ -58,10 +58,10 @@ const NavbarContainer = () => {
   getAuthedStatus();
   return (
     <div>
-      <Navbar bg="primary" expand="lg" className="p-2" variant="dark">
-        <Navbar.Brand href="/landing">OneNumber</Navbar.Brand>
+      <Navbar  bg="dark" variant="dark" expand="lg" className="p-2" padding={13}  position='static' color='inherit' >
+        <Navbar.Brand href="/landing"> OneNumber</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" align='right'>
           <div>{renderContent(user)}</div>
         </Navbar.Collapse>
       </Navbar>

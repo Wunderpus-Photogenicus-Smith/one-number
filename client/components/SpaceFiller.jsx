@@ -50,11 +50,11 @@ const SpaceFiller = (props) => {
 
   return (
     <div>
-                  <Helmet>
+            <Helmet>
               <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js" type="text/javascript" />
             </Helmet>
     {/* <button onClick={() => console.log('test')}>button</button> */}
-      <Button type='submit' onClick={createPlaidStuff}>
+      <Button type='submit' onClick={createPlaidStuff} variant="outline-info"  bg="dark" variant="dark">
         Connect a bank account
       </Button>
     </div>
